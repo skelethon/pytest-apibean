@@ -1,0 +1,26 @@
+[project]
+name = "pytest-apibean"
+version = "0.1.0a1"
+description = "Pytest plugin providing httpx + auth fixtures for apibean-based APIs"
+dependencies = [
+    "pytest",
+    "httpx",
+]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+python_files = "test_*.py"
+
+[project.entry-points.pytest11]
+pytest_apibean = "apibean.pytest.plugin"
