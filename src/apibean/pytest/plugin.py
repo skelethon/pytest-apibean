@@ -3,6 +3,8 @@ from dataclasses import asdict
 import pytest
 
 from .fixtures.auth import *
+from .fixtures.config import *
+from .fixtures.container import *
 
 
 def pytest_addoption(parser):
@@ -19,4 +21,4 @@ def pytest_cmdline_main(config):
         print("\n[pytest-apibean config]")
         for k, v in asdict(settings).items():
             print(f"  {k} = {v}")
-    return pytest.ExitCode.OK
+        return pytest.ExitCode.OK

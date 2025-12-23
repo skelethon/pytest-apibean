@@ -1,10 +1,10 @@
 [project]
 name = "pytest-apibean"
-version = "0.1.0a1"
-description = "Pytest plugin providing httpx + auth fixtures for apibean-based APIs"
+version = "0.1.0a2"
+description = "Pytest plugin providing apibean-based API testing fixtures integrated with apibean-client, designed for testing apibean REST services and datacore backends."
 dependencies = [
+    "dependency-injector>=4.48.3",
     "pytest",
-    "httpx",
 ]
 
 [build-system]
