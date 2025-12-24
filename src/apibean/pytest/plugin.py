@@ -5,6 +5,8 @@ import pytest
 from .fixtures.auth import *
 from .fixtures.config import *
 from .fixtures.container import *
+from .fixtures.database import *
+from .fixtures.seeds import *
 
 
 def pytest_addoption(parser):

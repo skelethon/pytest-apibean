@@ -14,6 +14,9 @@ class ApibeanOptions:
     password: str = "admin"
     timeout: float = 10.0
     auto_login: bool = True
+    seed_modules: str = "tests.seeders"
+    seed_marker: str = "seed"   # @pytest.mark.seed(...)
+    seed_mode: str = "auto"     # auto | explicit | off
 
 
 _DEFAULTS = ApibeanOptions()
@@ -45,27 +48,35 @@ def load_settings() -> ApibeanOptions:
     return ApibeanOptions(
         base_url=opts.get(
             "base_url",
-            os.getenv("API_BASE_URL", defaults.base_url),
+            os.getenv("APIBEAN_BASE_URL", defaults.base_url),
         ),
         login_path=opts.get(
             "login_path",
-            os.getenv("API_LOGIN_PATH", defaults.login_path),
+            os.getenv("APIBEAN_LOGIN_PATH", defaults.login_path),
         ),
         username=opts.get(
             "username",
-            os.getenv("API_USERNAME", defaults.username),
+            os.getenv("APIBEAN_USERNAME", defaults.username),
         ),
         password=opts.get(
             "password",
-            os.getenv("API_PASSWORD", defaults.password),
+            os.getenv("APIBEAN_PASSWORD", defaults.password),
         ),
         timeout=float(
             opts.get(
                 "timeout",
-                os.getenv("API_TIMEOUT", defaults.timeout),
+                os.getenv("APIBEAN_TIMEOUT", str(defaults.timeout)),
             )
         ),
         auto_login=bool(opts.get("auto_login", defaults.auto_login)),
+        seed_modules=opts.get(
+            "seed_modules",
+            os.getenv("APIBEAN_SEED_MODULES", defaults.seed_modules),
+        ),
+        seed_marker=opts.get(
+            "seed_marker",
+            os.getenv("APIBEAN_SEED_MARKER", defaults.seed_marker),
+        ),
     )
 
 
