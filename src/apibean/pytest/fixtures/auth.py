@@ -1,6 +1,6 @@
 import pytest
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def login(apibean_container):
     def _login(username: str, password: str) -> str:
         auth_service = apibean_container.auth_service()
